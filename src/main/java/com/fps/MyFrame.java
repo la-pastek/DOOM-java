@@ -3,17 +3,20 @@ package com.fps;
 import javax.swing.*;
 import java.awt.*;
 
-public class MyFrame extends JFrame {
+public class MyFrame extends Canvas {
 
     MyPanel panel;
 
 
     public MyFrame() throws HeadlessException, InterruptedException {
         panel = new MyPanel();
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.add(panel);
-        this.pack();
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        JFrame frame = new JFrame();
+        frame.add(panel);
+        frame.setTitle("fps");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+        frame.setVisible(true);
+        frame.pack();
+        System.out.println("Running...");
     }
 }
