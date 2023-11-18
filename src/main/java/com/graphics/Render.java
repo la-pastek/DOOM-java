@@ -6,7 +6,6 @@ public class Render {
     public final int width;
     public final int height;
 
-    private MyPanel panel;
     public final int[] pixels;
     public Render(int width, int height) {
         this.width = width;
@@ -19,7 +18,7 @@ public class Render {
             int yPix= i + yOffSet;
             for (int j = 0; j < render.width; j++) {
                 int xPix = j+xOffSet;
-                pixels[yPix+xPix*width]= render.pixels[j+i*render.width];
+                pixels[xPix+yPix*width]= render.pixels[j+i*render.width];
             }
         }
     }

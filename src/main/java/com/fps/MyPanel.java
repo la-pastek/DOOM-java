@@ -32,7 +32,7 @@ public class MyPanel extends Canvas implements Runnable {
     public MyPanel() {
         this.setFocusable(true);
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        this.setBackground(Color.gray);
+        //this.setBackground(Color.gray);
         this.addKeyListener(new AL());
         newContainerSelect();
         screen = new Screen(800, 600);
@@ -85,7 +85,7 @@ public class MyPanel extends Canvas implements Runnable {
                 delta--;
                 Toolkit.getDefaultToolkit().sync(); // Synchronisation avec le système d'affichage
                 try {
-                    Thread.sleep(1); // Petite pause pour limiter la fréquence de rendu
+                    Thread.sleep(200); // Petite pause pour limiter la fréquence de rendu
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

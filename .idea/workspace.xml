@@ -5,23 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="308e6c08-05a8-4efb-9c7f-0704e7baf46f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fps/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fps/MyFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fps/MyPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventaire/Container.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/inventaire/ContainerSelect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fps/hello-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/graphics/Render3D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fps/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fps/MyPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/graphics/Render.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/graphics/Render.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/graphics/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/graphics/Screen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
