@@ -1,7 +1,5 @@
 package com.graphics;
 
-import com.fps.MyPanel;
-
 public class Render {
     public final int width;
     public final int height;

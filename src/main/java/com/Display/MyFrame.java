@@ -1,4 +1,4 @@
-package com.fps;
+package com.Display;
 
 import javax.swing.*;
 import java.awt.*;

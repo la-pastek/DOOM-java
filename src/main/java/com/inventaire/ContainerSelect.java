@@ -30,8 +30,8 @@ public class ContainerSelect extends Rectangle {
         }
     }
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_A) {setxDirection(0);}
-        if (e.getKeyCode() == KeyEvent.VK_E) {setxDirection(0);}
+        if (e.getKeyCode() == KeyEvent.VK_K) {setxDirection(0);}
+        if (e.getKeyCode() == KeyEvent.VK_M) {setxDirection(0);}
     }
     public void  move(){
         x = x+xVelocity;
@@ -43,9 +43,9 @@ public class ContainerSelect extends Rectangle {
     }
 
     public void getAreaSelect(KeyEvent e){
-        if (e.getKeyCode()==KeyEvent.VK_Z){
+        if (e.getKeyCode()==KeyEvent.VK_L){
             areaXY[0]=x;
-            //areaXY[1]=y;
+            areaXY[1]=y;
         }
     }
 }

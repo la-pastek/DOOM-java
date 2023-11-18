@@ -1,35 +1,43 @@
 package com.graphics;
 
-import com.fps.Optimize;
+import com.Display.Optimize;
 
 public class Render3D extends Render {
 
-    public Render3D(int w,int h ) {
-        super(w,h);
+    public Render3D(int width,int height ) {
+        super(width,height);
     }
 
     public void floor(Optimize optimize){
-        double rotation = optimize.time/100.0;
+        double floorPosition = 15;
+        double ceilingPosition = 80;
+        double avant = optimize.controller.z;
+        double droite = optimize.controller.x;
+
+        double rotation = optimize.controller.rotation;
         double cosine = Math.cos(rotation);
         double sine = Math.sin(rotation);
 
-        for (int i = 0; i < 600; i++) {
-            double ceiling = (i+-600/2.0)/600;
-            double z = 10 /ceiling;
+        for (int y = 0; y < height; y++) {
+            double ceiling = (y+-height/2.0)/height;
+            double z = floorPosition/ceiling;
 
             if (ceiling<0){
-                z =8/-ceiling;
+                z =ceilingPosition/-ceiling;
             }
 
 
-            for (int j = 0; j < 800; j++) {
-                double Depth = (j - 800/2)/800;
+            for (int x = 0; x < width; x++) {
+                double Depth = (x - width/2.0)/width;
                 Depth *= z;
                 double xx = (Depth*cosine+z*sine);
                 double yy = (z* cosine - Depth*sine);
-                int xPis = (int)(xx);
-                int yPis = (int)(yy);
-                pixels[j+i*800]=((xPis&15)*16) | ((yPis&15)*16)<<5;
+                int xPis = (int)(xx+droite);
+                int yPis = (int)(yy+avant);
+                pixels[x+y*height]=Texture.floor.pixels[(xPis & 7)+(yPis & 7)*8];
+                if (z>500){
+                    pixels[x+y*height]=0;
+                }
             }
         }
     }

@@ -1,6 +1,5 @@
-package com.fps;
+package com.Display;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -8,7 +7,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
-import com.graphics.Render;
+import com.Command.InputH;
 import com.graphics.Screen;
 import com.inventaire.Container;
 import com.inventaire.ContainerSelect;
@@ -21,25 +20,28 @@ public class MyPanel extends Canvas implements Runnable {
     final int tileSize = scale * originalTileSize; // 48*48
     final int maxScreenCol = 16;
     final int maxScreenRow = 12;
-    final int screenWidth = tileSize * maxScreenCol; // 717 pixel
-    final int screenHeight = tileSize * maxScreenRow;//525 pixels
+    final int screenWidth = tileSize * maxScreenCol; // 768 pixel
+    final int screenHeight = tileSize * maxScreenRow;// 576 pixels
     Container container = new Container();
     ContainerSelect containerSelect;
 
     private BufferedImage img;
     private Screen screen;
     private  Optimize optimize;
+    private InputH inputH;
 
     public MyPanel() {
         this.setFocusable(true);
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
-        //this.setBackground(Color.gray);
-        this.addKeyListener(new AL());
-        newContainerSelect();
-
-        screen = new Screen(800, 600);
-        img = new BufferedImage(800, 600, BufferedImage.TYPE_INT_RGB);
+        inputH = new InputH();
+        this.addKeyListener(inputH);
+        this.addFocusListener(inputH);
+        this.addMouseListener(inputH);
+        this.addMouseMotionListener(inputH);
+        screen = new Screen(screenWidth, screenHeight);
+        img = new BufferedImage(screenWidth, screenHeight, BufferedImage.TYPE_INT_RGB);
         optimize = new Optimize();
+        newContainerSelect();
         gameThread = new Thread(this);
         gameThread.start();
 
@@ -47,7 +49,7 @@ public class MyPanel extends Canvas implements Runnable {
 
     public void paint(Graphics g) {
         super.paint(g);
-        BufferedImage buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage buffer = new BufferedImage(screenWidth, screenWidth, BufferedImage.TYPE_INT_ARGB);
         Graphics2D bufferGraphics = buffer.createGraphics();
         render();
         // Dessinez sur l'image tampon
@@ -82,9 +84,9 @@ public class MyPanel extends Canvas implements Runnable {
             lastTime = now;
 
             if (delta >= 1) {
-                optimize.tick();
+                optimize.tick(inputH.key);
                 move();
-                containerSelect.getAera();
+                //containerSelect.getAera();
                 repaint();
                 delta--;
                 Toolkit.getDefaultToolkit().sync(); // Synchronisation avec le système d'affichage
@@ -97,28 +99,18 @@ public class MyPanel extends Canvas implements Runnable {
         }
     }
 
-    public class AL extends KeyAdapter {
-        public void keyPressed(KeyEvent e) {
-            containerSelect.keyPressed(e);
-            containerSelect.getAreaSelect(e);
-        }
-
-        public void keyReleased(KeyEvent e) {
-            containerSelect.keyReleased(e);
-        }
-    }
 
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
-            createBufferStrategy(1); // Crée une stratégie de tamponnage avec 2 tampons
+            createBufferStrategy(3); // Crée une stratégie de tamponnage avec 2 tampons
             return;
         }
 
         // Récupérez le tableau de pixels de l'image pour le rendu
         int[] pixels = ((DataBufferInt) img.getRaster().getDataBuffer()).getData();
 
-        for (int i = 0; i < 600 * 800; i++) {
+        for (int i = 0; i < screenHeight * screenWidth; i++) {
             pixels[i] = screen.pixels[i];
         }
 
@@ -129,10 +121,10 @@ public class MyPanel extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
 
         // Dessinez l'image sur le composant
-        g.drawImage(img, 0, 0, 800+10, 600+10, null);
+        g.drawImage(img, 0, 0, screenWidth, screenHeight, null);
         g.setFont(new Font("Verdana", 0,25));
         g.setColor(Color.cyan);
-        g.drawString("V0.1", 0+10,0+40);
+        g.drawString("V0.1", 10,40);
         // Libérez les ressources graphiques
         g.dispose();
 
