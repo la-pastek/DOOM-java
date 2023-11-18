@@ -5,11 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="308e6c08-05a8-4efb-9c7f-0704e7baf46f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fps/Optimize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fps/MyPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fps/MyPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/graphics/Render3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/graphics/Render3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/graphics/Screen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/graphics/Screen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/Command/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fps/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,5 +94,16 @@
       <updated>1700005744116</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
