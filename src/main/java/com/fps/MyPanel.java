@@ -28,6 +28,7 @@ public class MyPanel extends Canvas implements Runnable {
 
     private BufferedImage img;
     private Screen screen;
+    private  Optimize optimize;
 
     public MyPanel() {
         this.setFocusable(true);
@@ -35,8 +36,10 @@ public class MyPanel extends Canvas implements Runnable {
         //this.setBackground(Color.gray);
         this.addKeyListener(new AL());
         newContainerSelect();
+
         screen = new Screen(800, 600);
         img = new BufferedImage(800, 600, BufferedImage.TYPE_INT_RGB);
+        optimize = new Optimize();
         gameThread = new Thread(this);
         gameThread.start();
 
@@ -79,6 +82,7 @@ public class MyPanel extends Canvas implements Runnable {
             lastTime = now;
 
             if (delta >= 1) {
+                optimize.tick();
                 move();
                 containerSelect.getAera();
                 repaint();
@@ -107,7 +111,7 @@ public class MyPanel extends Canvas implements Runnable {
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
-            createBufferStrategy(2); // Crée une stratégie de tamponnage avec 2 tampons
+            createBufferStrategy(1); // Crée une stratégie de tamponnage avec 2 tampons
             return;
         }
 
@@ -119,14 +123,16 @@ public class MyPanel extends Canvas implements Runnable {
         }
 
         // Appel à la méthode render de l'objet Screen
-        screen.render();
+        screen.render(optimize);
 
         // Récupérez l'objet Graphics de la stratégie de tampon
         Graphics g = bs.getDrawGraphics();
 
         // Dessinez l'image sur le composant
-        g.drawImage(img, 0, 0, 800, 600, null);
-
+        g.drawImage(img, 0, 0, 800+10, 600+10, null);
+        g.setFont(new Font("Verdana", 0,25));
+        g.setColor(Color.cyan);
+        g.drawString("V0.1", 0+10,0+40);
         // Libérez les ressources graphiques
         g.dispose();
 

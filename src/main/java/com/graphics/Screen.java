@@ -1,6 +1,8 @@
 package com.graphics;
 
 
+import com.fps.Optimize;
+
 import java.util.Random;
 
 public class Screen extends Render {
@@ -18,11 +20,15 @@ public class Screen extends Render {
         }
     }
 
-    public void render(){
+    public void render(Optimize optimize){
         for (int i = 0; i < 600*800; i++) {
             pixels[i]=0;
         }
-        render.floor();
+        for (int i = 0; i < 50; i++) {
+            int anim = (int) (Math.sin((optimize.time+i*2)%1000.0/100)*100);
+            int anim2 = (int) (Math.cos((optimize.time+i*2)%1000.0/100)*100);
+        }
+        render.floor(optimize);
         draw(render,0,0);
     }
 }
